@@ -1,6 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.core.adapters.mernisAdapter.FakeMernisManager;
 import kodlamaio.hrms.core.adapters.mernisAdapter.MernisServiceAdapter;
 import kodlamaio.hrms.core.adapters.mernisAdapter.UserCheckService;
 import kodlamaio.hrms.core.mailConfirmation.EMailConfirmation;
@@ -15,7 +16,7 @@ import java.util.List;
 @Service
 public class CandidateManager implements CandidateService {
 
-    CandidateDao candidateDao;
+    private CandidateDao candidateDao;
 
     @Autowired
     public CandidateManager(CandidateDao candidateDao){
@@ -47,7 +48,7 @@ public class CandidateManager implements CandidateService {
     }
 
     private boolean CheckIfRealPerson(Candidate candidate){
-        UserCheckService checkService = new MernisServiceAdapter();
+        UserCheckService checkService = new FakeMernisManager();
         if(checkService.CheckIfRealPerson(candidate)){
             return true;
         }

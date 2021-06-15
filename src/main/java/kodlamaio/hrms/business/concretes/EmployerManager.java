@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class EmployerManager implements EmployerService {
 
-    EmployerDao employerDao;
+    private EmployerDao employerDao;
 
     @Autowired
     public EmployerManager(EmployerDao employerDao){
